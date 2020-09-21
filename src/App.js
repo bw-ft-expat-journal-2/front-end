@@ -24,13 +24,6 @@ const initialLoginErrors =  {
 
 const initialLoginDiabled = true
 
-
-
-
-
-
-
-
 function App() {
   const [loginValues, setLoginValues] = useState(initialLoginValues)
   const [loginErrors, setLoginErrors] = useState(initialLoginErrors)
@@ -38,10 +31,9 @@ function App() {
 
   const validate = (name, value) => {
     yup
-      .reach(schema)
+      .reach(schema, name)
       .validate(value)
       .then(valid => {
-        console.log(valid)
         setLoginErrors({...loginErrors, [name]: ''})
       })
       .catch(err => {
