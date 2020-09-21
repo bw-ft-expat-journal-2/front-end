@@ -21,30 +21,30 @@ const onChange = evt =>{
 }
 return(
     <form className = 'registryform' onSubmit={Submit}>
-        <h2>Register</h2>;
+        <h2>Register</h2>
         <div className = 'inputs'>
-        <label>User Name
+        <label>User Name{<br></br>}
         <input 
-            value= {values.name}
+            value= {values.username}
             onChange={onChange}
             name='name'
             type='text'/>
-            </label>
-        <label>Email
+            </label>{<br></br>}
+        <label>Email:{<br></br>}
           <input
             value={values.email}
             onChange={onChange}
             name='email'
             type='text'
           />
-        </label>
-        <label>Password
+        </label>{<br></br>}
+        <label>Password:{<br></br>}
         <input 
             value= {values.password}
             onChange={onChange}
             name='password'
             type='text'/>
-            </label>
+            </label>{<br></br>}
 
             <label> I agree to the Terms and conditions
           <input
@@ -62,7 +62,7 @@ return(
             <div>{errors.password}</div>
             <div>{errors.terms}</div>
         </div>
-        <button id='submitbutton' disabled={disabled}>Submit</button>;
+        <button id='submitbutton' disabled={disabled}>Submit</button>
         </div>
     </form>
 )

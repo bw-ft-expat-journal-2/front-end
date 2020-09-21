@@ -40,18 +40,21 @@ const getUsers = () =>{
 }
 
 const addNewUser = newuser => {
-    axios.post('make sure to add api url when im made aware of it', newuser)
-      .then(res=>{
-        setUsers(res.data)
-        setFormValues(intitialformvalues)
-        console.log(Users)
-      })
-      .catch(err => {
-        debugger
-      })
-      .finally(()=>{
+    // axios.post('make sure to add api url when im made aware of it', newuser)
+    //   .then(res=>{
+    //     setUsers(res.data)
+    //     setFormValues(intitialformvalues)
+    //     console.log(Users)
+    //   })
+    //   .catch(err => {
+        
+    //   })
+    //   .finally(()=>{
 
-      })
+    //   })
+    console.log(newuser);
+    setFormValues(intitialformvalues)
+
   }
 
   const validate = (name, value) => {
@@ -111,7 +114,14 @@ const addNewUser = newuser => {
   return (
     <div className="App">
       <header className="App-header">
-      <RegistryForm/>
+        <div className = 'registerholder'>
+      <RegistryForm
+      values={formValues}
+      change={inputChange}
+      submit={formSubmit}
+      disabled={disabled}
+      errors={formErrors}/>
+      </div>
       </header>
     </div>
   );
