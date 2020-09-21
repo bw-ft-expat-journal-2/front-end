@@ -12,13 +12,13 @@ import * as yup from 'yup'
 import schema from './loginSchema'
 
 const initialLoginValues = {
-  user: '',
+  username: '',
   pass: ''
 }
 
 const initialLoginErrors =  {
-  user: '',
-  pass: '',
+  username: '',
+  password: '',
   request: ''
 }
 
@@ -48,9 +48,9 @@ function App() {
   }
 
   const attemptLogin = (userInfo) => {
-    axios.post('',userInfo)
+    axios.post('https://expatjournal-backend.herokuapp.com/api/auth/login', userInfo)
       .then(res => {
-        console.log(res)
+        console.log(res) //need to put res.(something) to tell it where the data is
         // ----------do something here to send you to the next page--------
       })
       .catch(err => {
@@ -63,8 +63,8 @@ function App() {
 
   const submit = () => {
     const userInfo = {
-      user: loginValues.user.trim(),
-      pass: loginValues.pass.trim()
+      username: loginValues.username.trim(),
+      password: loginValues.password.trim()
     }
     attemptLogin(userInfo)
   }
@@ -75,7 +75,6 @@ function App() {
         setLoginDisabled(!valid)
       })
   }, [loginValues])
-
 
   return (
     <Router>

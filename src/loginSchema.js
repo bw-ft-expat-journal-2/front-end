@@ -1,8 +1,8 @@
 import * as yup from 'yup'
 
 export default yup.object().shape({
-    user: yup.string()
+    username: yup.string()
         .required('Please enter your username'),
-    pass: yup.string()
+    password: yup.string()
         .required('Please enter your password')
 })

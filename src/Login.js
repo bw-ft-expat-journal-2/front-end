@@ -3,7 +3,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    useRouteMatch
     } from "react-router-dom";
 
 
@@ -12,6 +13,8 @@ import {
 
 const Login = (props) => {
     const {values, update, submit, disabled, errors} = props
+
+    const { url, path } = useRouteMatch()
 
     const onChange = evt => {
         const { name, value } = evt.target
@@ -34,23 +37,23 @@ const Login = (props) => {
                 <h2>Log In</h2>
                 <form onSubmit={onSubmit}>
                     <input 
-                    name='user'
+                    name='username'
                     type='text'
-                    placeholder='Username'
-                    value={values.user}
+                    placeholder='username'
+                    value={values.username}
                     onChange={onChange}
                     />
                     <input 
-                    name='pass'
+                    name='password'
                     type='password'
                     placeholder='Password'
-                    value={values.pass  }
+                    value={values.password  }
                     onChange={onChange}
                     />
                     <button disabled={disabled}>Log In</button>
                     <div>
-                        <span style={{color:'red'}}>{errors.user}</span>
-                        <span style={{color:'red'}}>{errors.pass}</span>
+                        <span style={{color:'red'}}>{errors.username}</span>
+                        <span style={{color:'red'}}>{errors.password}</span>
                         <span style={{color:'red'}}>{errors.request}</span>
                     </div>
                 </form>
