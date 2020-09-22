@@ -1,6 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
+import Card from './Card'
+import axios from 'axios'
 
+const Cards = () => {
+    const [ posts,setPosts ] = useState([])
 
-export const Cards = () => {
-    return <h1>Hello!</h1>
+    useEffect(()=> {
+        axios.get('https://expatjournal-backend.herokuapp.com/api/posts')
+            .then(res => {
+                console.log(res.data)
+                setPosts(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+    return(
+        <div className='postHolder'>
+            {posts.map = (post) => {
+                return(
+                    <Card post={post}/> 
+                )
+            }}
+        </div>
+    )
 }
+
+export default Cards
