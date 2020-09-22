@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import * as yup from 'yup';
 import schema from '../registrationschema'
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,10 +32,13 @@ export default function RegistryForm(props){
     const [formValues, setFormValues]= useState(intitialformvalues);
     const [formErrors, setFormErrors]= useState(initialFormErrors);
     const [disabled, setDisabled]= useState(true);
+    const history = useHistory();
 
     const addNewUser = newuser => {
         axios.post('https://expatjournal-backend.herokuapp.com/api/auth/register', newuser)
           .then(res=>{
+            localStorage.setItem('token', res.data.payload)
+            history.push('/users/id')
             setUsers(res.data)
             setFormValues(intitialformvalues)
             console.log(Users)
