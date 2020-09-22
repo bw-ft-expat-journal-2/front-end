@@ -10,10 +10,10 @@ const initialState = {
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_DATA:
-			console.log('REDUCER FETCH_DATA', payload)
+			console.log('REDUCER FETCH_DATA', action.payload)
 			return {
 				...state,
-				data: payload,
+				data: action.payload,
 				loading: true
 			}
 			case FETCH_DATA_SUCCESS:
@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
 		case POST_STORY:
 			return {
 				...state,
-				data: [ ...state.data, payload ],
+				data: [ ...state.data, action.payload ],
 				loading: true
 			}
 		case EDIT_STORY:
