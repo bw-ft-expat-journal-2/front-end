@@ -8,6 +8,7 @@ import {
 import './App.css';
 import Login from './components/Login'
 import Home from './components/Home'
+import RegistryForm from './components/registryform'
 
 function App() {
   return (
@@ -18,9 +19,9 @@ function App() {
       <Route path='/home'>
         <Home component={Home} />
       </Route>
-      {/* <Route path="/register"> 
-        <Register component = {Register}/>
-      </Route> */}
+      <Route path="/register"> 
+        <RegistryForm/>
+      </Route>
     </Router>
 
   );
