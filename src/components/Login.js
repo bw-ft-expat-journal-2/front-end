@@ -24,6 +24,7 @@ const initialErrors =  {
     const initialDisabled = true
 
 const Login = () => {
+    
     const [values, setValues] = useState(initialValues)
     const [errors, setErrors] = useState(initialErrors)
     const [disabled, setDisabled] = useState(initialDisabled)
@@ -93,7 +94,7 @@ const Login = () => {
         <div>
             <div className='left'>
                 <img src='#'/>
-                <Link to='/create'>create an account</Link>
+                <Link to='/registry'>create an account</Link>
             </div>
             <div className='right'>
                 <h2>Log In</h2>
