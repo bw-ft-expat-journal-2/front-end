@@ -7,7 +7,7 @@ import {
     useRouteMatch
     } from "react-router-dom";
 import * as yup from 'yup'
-import schema from './loginSchema'
+import schema from '../loginSchema'
 import axios from 'axios'
 
 const initialValues = {
