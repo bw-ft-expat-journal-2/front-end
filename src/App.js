@@ -7,17 +7,20 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Login from './components/Login'
+import Home from './components/Home'
 
 function App() {
   return (
     <Router>
-      <Route exact={true} path='/'>
-        <h1>Hello</h1>
-        <Link to='/login'>login</Link>
+      <Route exact path ='/'>
+        <Login component ={Login}/>
       </Route>
-      <Route path='/login'>
-        <Login />
+      <Route path='/home'>
+        <Home component={Home} />
       </Route>
+      {/* <Route path="/register"> 
+        <Register component = {Register}/>
+      </Route> */}
     </Router>
 
   );

@@ -11,7 +11,9 @@ const initialState = {
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_DATA:
-			console.log('REDUCER FETCH_DATA')
+
+			console.log('REDUCER FETCH_DATA', action.payload)
+
 			return {
 				...state,
 				data: action.payload,
