@@ -53,7 +53,7 @@ const Login = () => {
     }
 
     const attemptLogin = (userInfo) => {
-        axios.post('https://cors-anywhere.herokuapp.com/https://expatjournal-backend.herokuapp.com/api/auth/login', userInfo)
+        axios.post('https://expatjournal-backend.herokuapp.com/api/auth/login', userInfo)
             .then(res => {
                 console.log('From login!', res) //need to put res.(something) to tell it where the data is
                 // ----------do something here to send you to the next page--------

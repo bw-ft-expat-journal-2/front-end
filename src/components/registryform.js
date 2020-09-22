@@ -33,17 +33,14 @@ export default function RegistryForm(props){
 
     const addNewUser = newuser => {
           // Added CORS anywhere because I was getting blocked by CORS
-        axios.post('https://cors-anywhere.herokuapp.com/https://expatjournal-backend.herokuapp.com/api/auth/register', newuser)
+        axios.post('https://expatjournal-backend.herokuapp.com/api/auth/register', newuser)
           .then(res=>{
             setUsers(res.data)
             setFormValues(intitialformvalues)
             console.log(Users)
           })
           .catch(err => {
-            
-          })
-          .finally(()=>{
-    
+            console.log(err.message)
           })
         console.log(newuser);
         setFormValues(intitialformvalues)
