@@ -10,7 +10,7 @@ import Login from './components/Login'
 import Home from './components/Home'
 import RegistryForm from './components/registryform'
 import { PrivateRoute } from './components/PrivateRoute'
-import { Cards } from './components/Cards'
+import Cards from './components/Cards'
 
 function App() {
   return (
