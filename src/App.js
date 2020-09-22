@@ -13,7 +13,7 @@ import schema from './loginSchema'
 
 const initialLoginValues = {
   username: '',
-  pass: ''
+  password: ''
 }
 
 const initialLoginErrors =  {
