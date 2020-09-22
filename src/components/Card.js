@@ -1,6 +1,6 @@
 import React from 'react'
 import { POSTS_PATH } from '../utils/URLS'
-import PostImage from './'
+import PostImage from './PostImage'
 
 const Card = ({ post }) => {
     
@@ -11,7 +11,7 @@ const Card = ({ post }) => {
             <div className='imageContainer'>
                 {post.imageUrls.map = (image) => {
                     return(
-                        <PostImage image='image'/>
+                        <PostImage image={image}/>
                     )
                 }}
             </div>
