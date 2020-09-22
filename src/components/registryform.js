@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import * as yup from 'yup';
 import schema from '../registrationschema'
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,11 +32,14 @@ export default function RegistryForm(props){
     const [formValues, setFormValues]= useState(intitialformvalues);
     const [formErrors, setFormErrors]= useState(initialFormErrors);
     const [disabled, setDisabled]= useState(true);
+    const history = useHistory();
 
     const addNewUser = newuser => {
           // Added CORS anywhere because I was getting blocked by CORS
         axios.post('https://cors-anywhere.herokuapp.com/https://expatjournal-backend.herokuapp.com/api/auth/register', newuser)
           .then(res=>{
+            localStorage.setItem('token', res.data.payload)
+            history.push('/')
             setUsers(res.data)
             setFormValues(intitialformvalues)
             console.log(Users)
