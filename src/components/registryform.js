@@ -32,7 +32,8 @@ export default function RegistryForm(props){
     const [disabled, setDisabled]= useState(true);
 
     const addNewUser = newuser => {
-        axios.post('https://expatjournal-backend.herokuapp.com/api/auth/register', newuser)
+          // Added CORS anywhere because I was getting blocked by CORS
+        axios.post('https://cors-anywhere.herokuapp.com/https://expatjournal-backend.herokuapp.com/api/auth/register', newuser)
           .then(res=>{
             setUsers(res.data)
             setFormValues(intitialformvalues)
