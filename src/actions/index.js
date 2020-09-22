@@ -12,7 +12,7 @@ export const fetchData = () => {
             type: FETCH_DATA
         })
         axiosWithAuth()
-            .get('')
+            .get('/api/users')
             .then(res => {
                 console.log(res.data)
                 dispatch({
