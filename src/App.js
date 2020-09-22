@@ -21,6 +21,11 @@ function App() {
       <Route path='/home'>
         <Home component={Home} />
       </Route>
+
+      <Route path='/cards'>
+        <Cards component = {Cards} />
+      </Route>
+
       <Route path="/register"> 
         <RegistryForm/>
       </Route>
