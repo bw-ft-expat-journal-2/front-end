@@ -35,7 +35,6 @@ export default function RegistryForm(props){
     const history = useHistory();
 
     const addNewUser = newuser => {
-          // Added CORS anywhere because I was getting blocked by CORS
         axios.post('https://expatjournal-backend.herokuapp.com/api/auth/register', newuser)
           .then(res=>{
             localStorage.setItem('token', res.data.payload)
@@ -45,10 +44,7 @@ export default function RegistryForm(props){
             console.log(Users)
           })
           .catch(err => {
-            
-          })
-          .finally(()=>{
-    
+            console.log(err.message)
           })
         console.log(newuser);
         setFormValues(intitialformvalues)
