@@ -29,7 +29,7 @@ function App() {
       <Route path="/register"> 
         <RegistryForm/>
       </Route>
-      <PrivateRoute exact path="/protected" component = { Cards } />
+      <PrivateRoute exact path="/protected" component = { Home } />
     </Router>
 
   );
