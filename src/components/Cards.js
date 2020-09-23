@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Card from './Card'
 import axios from 'axios'
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const dummyData = [
     {
@@ -41,10 +42,11 @@ const Cards = () => {
     const [ posts, setPosts ] = useState([])
 
     useEffect(()=> {
-        axios.get('https://expatjournal-backend.herokuapp.com/api/posts')
+        axiosWithAuth()
+            .get('api/posts')
             .then(res => {
                 console.log(res.data)
-                setPosts(res.data)
+                setPosts(res.data.data)
             })
             .catch(err => {
                 console.log(err)
