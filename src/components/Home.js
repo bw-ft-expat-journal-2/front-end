@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Home = (props) => {
 	return (
+
     <>
         
 		    <h1>Expat Journal</h1>

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link,
-    useRouteMatch
+    useRouteMatch,
+    useHistory
     } from "react-router-dom";
 import * as yup from 'yup'
 import schema from '../loginSchema'
 import axios from 'axios'
+
 
 const initialValues = {
     username: '',
@@ -24,6 +23,9 @@ const initialErrors =  {
     const initialDisabled = true
 
 const Login = () => {
+
+    let history = useHistory();
+
     const [values, setValues] = useState(initialValues)
     const [errors, setErrors] = useState(initialErrors)
     const [disabled, setDisabled] = useState(initialDisabled)
@@ -33,7 +35,7 @@ const Login = () => {
             .reach(schema, name)
             .validate(value)
             .then(valid => {
-                console.log(valid)
+                // console.log(valid)
                 setErrors({...errors, [name]: ''})
             })
             .catch(err => {
@@ -50,8 +52,10 @@ const Login = () => {
     const attemptLogin = (userInfo) => {
         axios.post('https://expatjournal-backend.herokuapp.com/api/auth/login', userInfo)
             .then(res => {
-                console.log(res) //need to put res.(something) to tell it where the data is
+                console.log('From login!', res.data) //need to put res.(something) to tell it where the data is
                 // ----------do something here to send you to the next page--------
+                window.localStorage.setItem('token', res.data.token)
+                history.push('/protected')
             })
             .catch(err => {
                 console.log(err)
@@ -114,8 +118,10 @@ const Login = () => {
                     placeholder='Password'
                     value={values.password  }
                     onChange={onChange}
+
                     /><br></br>
-                    <button disabled={disabled}>Log In</button>
+                    <button disabled={disabled} type="submit">Log In</button>
+
                     <div>
                         <span style={{color:'red'}}>{errors.username}</span>
                             <br/>
