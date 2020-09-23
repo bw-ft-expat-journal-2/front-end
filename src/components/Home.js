@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 const Home = (props) => {
 	return (
     <>
-        <Nav/>
+        
 		    <h1>Expat Journal</h1>
+			<Nav/>
 			<h2>What Was Your Adventure?</h2>
 			<Link to="/post" className="link">
 				{' '}

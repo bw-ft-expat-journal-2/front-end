@@ -108,8 +108,15 @@ const onChange = evt =>{
     inputChange(name, valueToUse)
 }
 return(
-  <div>
-    <Link to='/'>Already have an account?</Link>
+  <div className='allcontainer'>
+  <div className = 'formcontainer'>
+    <div className='left'>
+      <div className='formimg'>
+    <img src={require('../images/formimage.jpg')} alt ='mountains'/><br></br>
+    </div>
+    <Link to='/login'>Already have an account?</Link>
+    </div>
+    <div className='right'>
     <form className = 'registryform' onSubmit={Submit}>
         <h2>Register</h2>
         <div className = 'inputs'>
@@ -117,6 +124,7 @@ return(
         <input 
             value= {formValues.username}
             onChange={onChange}
+            placeholder='username'
             name='name'
             type='text'/>
             </label>{<br></br>}
@@ -124,6 +132,7 @@ return(
           <input
             value={formValues.email}
             onChange={onChange}
+            placeholder='Email'
             name='email'
             type='text'
           />
@@ -133,17 +142,9 @@ return(
             value= {formValues.password}
             onChange={onChange}
             name='password'
+            placeholder='Password'
             type='text'/>
             </label>{<br></br>}
-
-            <label> I agree to the Terms and conditions
-          <input
-            type="checkbox"
-            name='terms'
-            checked={formValues.terms}
-            onChange={onChange}
-          />
-        </label>
     </div>
         <div className = 'submitarea'>
         <div className='errors'>
@@ -154,7 +155,10 @@ return(
         </div>
         <button id='submitbutton' disabled={disabled}>Submit</button>
         </div>
+        <Link to='/login'className='onlywhensmall'>Already have an account?</Link>
     </form>
+    </div>
+    </div>
     </div>
 )
 }
