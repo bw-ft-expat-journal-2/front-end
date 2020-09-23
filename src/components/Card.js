@@ -7,13 +7,14 @@ const Card = ({ post }) => {
     return(
         <div>
             <h2>{post.title}</h2>
-            <p>{post.content}</p>
+            <p>{post.contents}</p>
             <div className='imageContainer'>
-                {post.imageUrls.map = (image) => {
+                {/* {
+                    post.imageUrls.map(image => {
                     return(
                         <PostImage image={image}/>
                     )
-                }}
+                })} */}
             </div>
         </div>
     )

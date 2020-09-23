@@ -35,11 +35,6 @@ export default function RegistryForm(props){
     const history = useHistory();
 
     const addNewUser = newuser => {
-          // const object = {
-          //   username: newuser.username,
-          //   password: newuser.password,
-          //   email: newuser.email
-          // }
         axios.post('https://expatjournal-backend.herokuapp.com/api/auth/register', newuser)
           .then(res=>{
             localStorage.setItem('token', res.data.payload)
