@@ -21,11 +21,6 @@ function App() {
       <Route path='/home'>
         <Home component={Home} />
       </Route>
-
-      <Route path='/protected'>
-        <Cards component = {Cards} />
-      </Route>
-
       <Route path="/register"> 
         <RegistryForm/>
       </Route>
