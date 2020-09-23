@@ -16,10 +16,10 @@ function App() {
   return (
     <Router>
       <Route exact path ='/'>
-        <Login component ={Login}/>
+      <Home component={Home} />
       </Route>
-      <Route path='/home'>
-        <Home component={Home} />
+      <Route path='/login'>
+        <Login component ={Login}/>
       </Route>
 
       <Route path='/protected'>
