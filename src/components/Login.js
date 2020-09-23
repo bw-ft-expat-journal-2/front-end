@@ -35,7 +35,7 @@ const Login = () => {
             .reach(schema, name)
             .validate(value)
             .then(valid => {
-                console.log(valid)
+                // console.log(valid)
                 setErrors({...errors, [name]: ''})
             })
             .catch(err => {
@@ -50,11 +50,11 @@ const Login = () => {
     }
 
     const attemptLogin = (userInfo) => {
-        axios.post('https://cors-anywhere.herokuapp.com/https://expatjournal-backend.herokuapp.com/api/auth/login', userInfo)
+        axios.post('https://expatjournal-backend.herokuapp.com/api/auth/login', userInfo)
             .then(res => {
-                console.log('From login!', res) //need to put res.(something) to tell it where the data is
+                console.log('From login!', res.data) //need to put res.(something) to tell it where the data is
                 // ----------do something here to send you to the next page--------
-                window.localStorage.setItem('token', res.data.payload)
+                window.localStorage.setItem('token', res.data.token)
                 history.push('/protected')
             })
             .catch(err => {

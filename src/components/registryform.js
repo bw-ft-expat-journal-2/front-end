@@ -38,7 +38,6 @@ export default function RegistryForm(props){
           // Added CORS anywhere because I was getting blocked by CORS
         axios.post('https://expatjournal-backend.herokuapp.com/api/auth/register', newuser)
           .then(res=>{
-            localStorage.setItem('token', res.data.payload)
             history.push('/')
             setUsers(res.data)
             setFormValues(intitialformvalues)
