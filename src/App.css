@@ -10,7 +10,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video, input {
+time, mark, audio, video, input, button {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -84,11 +84,14 @@ html, body {
   margin-top:25rem;
   height: 25rem;
   background-color: white;
-  background-color: #f0ead6;
+  background-color: #65b6ec;
 }
 .formimg img{
   border-radius:10px;
   max-height: 100%;
+}
+img{
+  max-height:100%;
 }
 .formimg{
   height:20rem;
@@ -131,6 +134,35 @@ button{
 .onlywhensmall{
   display:none;
 }
+.postcont{
+  display:flex;
+  flex-direction: row;
+  width: 100%;
+  height:100%;
+  justify-content: space-between;
+}
+.notpic{
+  width: 30rem;
+  margin-top:1rem;
+}
+.notpic button{
+  width: 7rem;
+  border:2px solid gray;
+  border-radius: 5px;
+  margin-left:1rem;
+  margin-top: 2rem;
+}
+.imageContainer{
+  height:100%;
+
+}
+.imageContainer img{
+  border-radius: 10px;
+  
+}
+.allcont{
+  background-image: url("./images/bigbackground.jpg");
+}
 @media(max-width: 1325px){
   .left{
     display: none;
@@ -139,6 +171,30 @@ button{
     display:block;
   }
   }
+
+  @media(max-width: 1671px){
+.postcont{
+  flex-direction: column;
+}
+.notpic{
+  margin:auto;
+  width: 100%;
+}
+
+.notpic h2{
+  font-size:2rem;
+}
+.imageContainer{
+  margin:auto;
+  height:40%;
+}
+}
+@media(max-width: 984px){
+.imageContainer{
+  height:20%;
+}
+
+}
 
 
 
