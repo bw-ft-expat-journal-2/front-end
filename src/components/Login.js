@@ -58,7 +58,7 @@ const Login = () => {
                 history.push('/protected')
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.message)
             })
             .finally(() => {
                 setValues(initialValues)

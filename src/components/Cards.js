@@ -19,7 +19,7 @@ const CardCont = styled.div`
 
 
 
-const Cards = (props) => {
+const Cards = () => {
     const [ posts, setPosts ] = useState([])
 
     useEffect(()=> {
@@ -31,7 +31,7 @@ const Cards = (props) => {
             .catch(err => {
                 console.log(err)
             })
-    }, [props.updated])
+    }, [posts])
 
     return(
         <div className='allcont'>
@@ -46,10 +46,11 @@ const Cards = (props) => {
     )
 }
 
-const mapStatetoProps = (state) => {
-    return{
-    updated: state.updated
-    }
-}
+// const mapStatetoProps = (state) => {
+//     return{
+//     updated: state.updated
+//     }
+// }
 
-export default connect(mapStatetoProps)(Cards) 
+// export default connect(mapStatetoProps)(Cards) 
+export default Cards
