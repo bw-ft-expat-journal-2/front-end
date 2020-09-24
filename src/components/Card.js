@@ -10,7 +10,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 const CardStyle = styled.div`
     border:2px solid grey;
     width: 75%;
-    height:30re;
+    height:30rem;
     box-sizing: border-box;
     margin-bottom:2rem;
     background-color: #1f2833;
