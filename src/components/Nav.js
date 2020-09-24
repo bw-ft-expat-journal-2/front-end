@@ -6,7 +6,7 @@ const Nav = (props) => {
         <>
 
             <Link to="/register" className='link'> SignUp</Link>
-            <Link to="/" className='link'> Login</Link>
+            <Link to="/login" className='link'> Login</Link>
             <a href='https://expat-journal-2-bw.netlify.app/' className='link'>Home</a>
             <Link to="/protected" className='link'>Posts</Link>
 
