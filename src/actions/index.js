@@ -1,5 +1,8 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios'
 // import { POSTS_PATH } from '../utils/URLS'
+
+import { POSTS_PATH } from '../utils/URLS'
 
 export const FETCH_DATA = 'FETCH_DATA';
 export const FETCH_DATA_SUCCESS = 'POST_DATA_SUCCESS'
@@ -10,13 +13,13 @@ export const EDIT_STORY_SUCCESS = 'EDIT_STORY_SUCCESS'
 export const DELETE_STORY = 'DELETE_STORY';
 export const DELETE_STORY_SUCCESS = 'DELETE_STORY_SUCCESS'
 
-export const fetchData = ()  => {
+export const fetchData = () => dispatch => {
     return (dispatch) => {
     dispatch({
         type: FETCH_DATA
     })
     axiosWithAuth()
-        .get(`/api/posts`)
+        .get(POSTS_PATH)
         .then(res => {
             dispatch({
                 type: FETCH_DATA_SUCCESS,
@@ -31,7 +34,7 @@ export const fetchData = ()  => {
 
 export const addStory = post => {
     const addNewStory = axiosWithAuth()
-        .post(`/api/posts`, post)
+        .post(`/api/posts/${post.id}`, post)
     return (dispatch) => {
         dispatch({
             type: POST_STORY
@@ -60,25 +63,22 @@ export const editStory = post => dispatch => {
                 type: EDIT_STORY_SUCCESS, 
                 payload: res.data
             })
+            window.location = '/protected'
         })
 }
 
-export const deleteStory = post => {
-    const removePost = axiosWithAuth()
-        .delete(`/api/posts/${post.id}`, post)
-        return (dispatch) => {
-            dispatch({
-                type: DELETE_STORY
-            })
-        removePost
-        .then(({data}) => {
+export const deleteStory = post => dispatch =>{
+        console.log('something')
+        axiosWithAuth()
+        .delete(`/api/posts/${post.id}`)
+        .then(data => {
             dispatch({
                 type: DELETE_STORY_SUCCESS,
                 payload: data
             })
+            window.location = '/protected'
         })
         .catch(err => {
             console.log(`That didn't delete :/`, err)
         })
-     }
 }

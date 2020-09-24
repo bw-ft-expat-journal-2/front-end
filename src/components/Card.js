@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PostImage from './PostImage'
+import { connect } from 'react-redux'
+import { editStory } from '../actions/index'
+import { deleteStory } from '../actions/index'
+import EditCard from './EditCard'
 import styled from 'styled-components'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-
 
 const CardStyle = styled.div`
     border: 2px solid gray;
@@ -15,9 +18,8 @@ const CardStyle = styled.div`
     justify-content:space-between;
 `
 
-
-const Card = ({ post }) => {
-    
+const Card = (props) => {
+    const [ update, setUpdate ] = useState(false)
     const [images, setImages] = useState([])
 
     useEffect(()=> {
@@ -30,23 +32,37 @@ const Card = ({ post }) => {
             .catch(err => {
                 console.log(err)
             })
-    }, [post])
+    }, [props.post])
+
 
     return(
         <CardStyle>
-            <div className = 'titleanddes'>
-            <h2 className= 'title'>{post.title}</h2>
-            <p className='description'>{post.contents}</p>
-            </div>
+
+        {update ? <EditCard id={props.post.id} update={update} setUpdate={setUpdate}/> :
+        <div>
+            <h2>{props.post.title}</h2>
+            <p>{props.post.contents}</p>
+            <button onClick={() => {
+                setUpdate(!update)} }>Edit Story</button>
+            <button onClick={() => props.deleteStory(props.post)}>Delete Story</button>
+
             <div className='imageContainer'>
                 {images.map(image => {
+
                     return(
-                        <PostImage image={image} id={post.id}/> 
+                        <PostImage image={image} id={props.post.id}/> 
                     )
                 })}
             </div>
-        </CardStyle>
+        </div>
+    }
+    </CardStyle> 
     )
 }
-
-export default Card
+const mapStatetoProps = (state) => {
+    return {
+        editStory: state.editStory,
+        deleteStory: state.deleteStory
+    }
+}
+export default connect (mapStatetoProps, {editStory, deleteStory})(Card)

@@ -18,8 +18,10 @@ function App() {
       <Route exact path ='/'>
       <Home component={Home} />
       </Route>
+
       <Route path='/login'>
         <Login component ={Login}/>
+
       </Route>
       <Route path="/register"> 
         <RegistryForm/>
