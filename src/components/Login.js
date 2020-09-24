@@ -62,6 +62,7 @@ const Login = () => {
             })
             .finally(() => {
                 setValues(initialValues)
+
         })
     }
 
@@ -94,10 +95,13 @@ const Login = () => {
 
 
     return(
-        <div>
+        <div className= 'allcontainer'>
+        <div className='formcontainer'>
             <div className='left'>
-                <img src='#'/>
-                <Link to='/register'>create an account</Link>
+            <div className='formimg'>
+            <img src={require('../images/login.jpeg')} alt ='mountains'/><br></br>
+            </div>
+            <Link to='/register'>create an account</Link>
             </div>
             <div className='right'>
                 <h2>Log In</h2>
@@ -108,15 +112,17 @@ const Login = () => {
                     placeholder='username'
                     value={values.username}
                     onChange={onChange}
-                    />
+                    /><br></br>
                     <input 
                     name='password'
                     type='password'
                     placeholder='Password'
                     value={values.password  }
                     onChange={onChange}
-                    />
+
+                    /><br></br>
                     <button disabled={disabled} type="submit">Log In</button>
+
                     <div>
                         <span style={{color:'red'}}>{errors.username}</span>
                             <br/>
@@ -124,8 +130,10 @@ const Login = () => {
                             <br/>
                         <span style={{color:'red'}}>{errors.request}</span>
                     </div>
+                    <Link to='/register'className='onlywhensmall'>Create an account</Link>
                 </form>
             </div>
+        </div>
         </div>
     )
 }

@@ -1,7 +1,16 @@
-import React, { useState } from 'react'
-import { POSTS_PATH } from '../utils/URLS'
+import React, { useState, useEffect } from 'react'
 import PostImage from './PostImage'
-import { connect } from 'react-redux'
+import styled from 'styled-components'
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
+
+const CardStyle = styled.div`
+    border:2px solid pink;
+    width: 80%;
+    padding: 0px 20px;
+    box-sizing: border-box;
+`
+
 
 import { editStory } from '../actions'
 import { deleteStory } from '../actions'
@@ -9,21 +18,34 @@ import { deleteStory } from '../actions'
 
 const Card = (props) => {
     
+    const [images, setImages] = useState([])
+
+    useEffect(()=> {
+        axiosWithAuth()
+            .get(`api/images`)
+            .then(res => {
+                console.log(res.data.data)
+                setImages(res.data.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [post])
+
     return(
-        <div>
-            <h2>{props.post.title}</h2>
-            <p>{props.post.contents}</p>
-            <button onClick={() => deleteStory(props.post)}>Delete Story</button>
+
+        <CardStyle>
+            <h2>{post.title}</h2>
+            <p>{post.contents}</p>
             <div className='imageContainer'>
-                {console.log(props.post)}
-                {/* {
-                    post.imageUrls.map(image => {
+                {images.map(image => {
+
                     return(
-                        <PostImage image={image}/>
+                        <PostImage image={image} id={post.id}/> 
                     )
-                })} */}
+                })}
             </div>
-        </div>
+        </CardStyle>
     )
 }
 

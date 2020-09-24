@@ -1,3 +1,51 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+  vertical-align: baseline;
+  text-decoration:none;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+  line-height: 1;
+  height:100%;
+  width: 100%;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
 .App {
   text-align: center;
 }
@@ -5,12 +53,6 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -27,12 +69,76 @@
 .App-link {
   color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+html, body {
+  height: 100%;
 }
+.formcontainer{
+  text-align:center;
+  border:grey 1px solid;
+  border-radius:5px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 55%;
+  padding-top:2.5%;
+  margin: auto;
+  margin-top:25rem;
+  height: 25rem;
+  background-color: white;
+  background-color: #f0ead6;
+}
+.formimg img{
+  border-radius:10px;
+  max-height: 100%;
+}
+.formimg{
+  height:20rem;
+  margin-bottom:1rem;
+  border-radius: 50rem;
+}
+input{
+  height:2rem;
+  width:15rem;
+  border-radius:5px;
+  margin-bottom: 1rem;
+  border:solid grey 2px;
+  font-size:1.4rem;
+}
+h2{
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+label{
+  font-size:1.5rem;
+}
+button{
+  height: 2rem;
+  width: 5rem;
+}
+.left{
+  font-size:1.25rem;
+}
+
+.allcontainer{
+  background-position: center;
+  background-image: url("./images/background.png");
+  background-repeat:repeat;
+  position:absolute;
+  top:-10rem;
+  width:100%;
+  height: 100%;
+  padding-bottom:10rem;
+}
+.onlywhensmall{
+  display:none;
+}
+@media(max-width: 1325px){
+  .left{
+    display: none;
+  }
+  .onlywhensmall{
+    display:block;
+  }
+  }
+
+
+
