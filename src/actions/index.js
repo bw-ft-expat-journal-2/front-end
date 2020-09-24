@@ -10,7 +10,7 @@ export const EDIT_STORY_SUCCESS = 'EDIT_STORY_SUCCESS'
 export const DELETE_STORY = 'DELETE_STORY';
 export const DELETE_STORY_SUCCESS = 'DELETE_STORY_SUCCESS'
 
-export const fetchData = ()  => {
+export const fetchData = () => dispatch => {
     return (dispatch) => {
     dispatch({
         type: FETCH_DATA
@@ -60,18 +60,15 @@ export const editStory = post => dispatch => {
                 type: EDIT_STORY_SUCCESS, 
                 payload: res.data
             })
+            window.location = '/protected'
         })
 }
 
-export const deleteStory = post => {
-    const removePost = axiosWithAuth()
-        .delete(`/api/posts/${post.id}`, post)
-        return (dispatch) => {
-            dispatch({
-                type: DELETE_STORY
-            })
-        removePost
-        .then(({data}) => {
+export const deleteStory = post => dispatch =>{
+        console.log('something')
+        axiosWithAuth()
+        .delete(`/api/posts/${post.id}`)
+        .then(data => {
             dispatch({
                 type: DELETE_STORY_SUCCESS,
                 payload: data
@@ -80,5 +77,4 @@ export const deleteStory = post => {
         .catch(err => {
             console.log(`That didn't delete :/`, err)
         })
-     }
 }

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Card from './Card'
 import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { connect } from 'react-redux'
+import { fetchData } from '../actions/index'
 
 const dummyData = [
     {
@@ -38,7 +40,7 @@ const dummyData = [
 //was just using to test the card creation was working / styling ^^^
 
 
-const Cards = () => {
+const Cards = (props) => {
     const [ posts, setPosts ] = useState([])
 
     useEffect(()=> {
@@ -51,17 +53,23 @@ const Cards = () => {
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }, [props.updated])
 
     return(
         <div className='postHolder'>
             {posts.map(post => {
                 return(
-                    <Card post={post}/> 
+                    <Card post={post} /> 
                 )
             })}
         </div>
     )
 }
 
-export default Cards
+const mapStatetoProps = (state) => {
+    return{
+    updated: state.updated
+    }
+}
+
+export default connect(mapStatetoProps)(Cards) 
