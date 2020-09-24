@@ -7,10 +7,14 @@ import styled from 'styled-components'
 
 
 const CardCont = styled.div`
-    border:2px solid blue;
     display:flex;
     flex-direction: column;
     align-items: center;
+    @media(max-width: 1671px){
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
 `
 
 
@@ -30,6 +34,7 @@ const Cards = (props) => {
     }, [props.updated])
 
     return(
+        <div className='allcont'>
         <CardCont className='postHolder'>
             {posts.map(post => {
                 return(
@@ -37,6 +42,7 @@ const Cards = (props) => {
                 )
             })}
         </CardCont>
+        </div>
     )
 }
 
