@@ -48,7 +48,7 @@ export default (state = initialState, action) => {
 		case EDIT_STORY_SUCCESS:
 			return {
 				...state,
-				updated: true
+				updated: !state.updated
 			}
 		case DELETE_STORY:
 			return {
@@ -58,8 +58,7 @@ export default (state = initialState, action) => {
 		case DELETE_STORY_SUCCESS:
 			return {
 				...state,
-				updated: false,
-				data: [...action.payload.data],
+				updated: !state.updated,
 				loading: false
 			}
 

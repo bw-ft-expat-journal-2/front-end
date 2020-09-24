@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PostImage from './PostImage'
+import { connect } from 'react-redux'
+import { editStory } from '../actions/index'
+import { deleteStory } from '../actions/index'
+import EditCard from './EditCard'
 import styled from 'styled-components'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-
 
 const CardStyle = styled.div`
     border:2px solid pink;
@@ -11,13 +14,8 @@ const CardStyle = styled.div`
     box-sizing: border-box;
 `
 
-
-import { editStory } from '../actions'
-import { deleteStory } from '../actions'
-
-
 const Card = (props) => {
-    
+    const [ update, setUpdate ] = useState(false)
     const [images, setImages] = useState([])
 
     useEffect(()=> {
@@ -30,30 +28,35 @@ const Card = (props) => {
             .catch(err => {
                 console.log(err)
             })
-    }, [post])
+    }, [props.post])
+
 
     return(
-
         <CardStyle>
-            <h2>{post.title}</h2>
-            <p>{post.contents}</p>
+        {update ? <EditCard id={props.post.id} update={update} setUpdate={setUpdate}/> :
+        <div>
+            <h2>{props.post.title}</h2>
+            <p>{props.post.contents}</p>
+            <button onClick={() => {
+                setUpdate(!update)} }>Edit Story</button>
+            <button onClick={() => props.deleteStory(props.post)}>Delete Story</button>
             <div className='imageContainer'>
                 {images.map(image => {
 
                     return(
-                        <PostImage image={image} id={post.id}/> 
+                        <PostImage image={image} id={props.post.id}/> 
                     )
                 })}
             </div>
-        </CardStyle>
+        </div>
+    }
+    </CardStyle> 
     )
 }
-
-const mapStateToProps = state => {
+const mapStatetoProps = (state) => {
     return {
         editStory: state.editStory,
         deleteStory: state.deleteStory
     }
 }
-
-export default connect(mapStateToProps, { editStory, deleteStory }) (Card)
+export default connect (mapStatetoProps, {editStory, deleteStory})(Card)

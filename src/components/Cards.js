@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Card from './Card'
-import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { connect } from 'react-redux'
+import { fetchData } from '../actions/index'
 import styled from 'styled-components'
 
 
@@ -14,7 +15,7 @@ const CardCont = styled.div`
 
 
 
-const Cards = () => {
+const Cards = (props) => {
     const [ posts, setPosts ] = useState([])
 
     useEffect(()=> {
@@ -26,7 +27,7 @@ const Cards = () => {
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }, [props.updated])
 
     return(
         <CardCont className='postHolder'>
@@ -39,4 +40,10 @@ const Cards = () => {
     )
 }
 
-export default Cards
+const mapStatetoProps = (state) => {
+    return{
+    updated: state.updated
+    }
+}
+
+export default connect(mapStatetoProps)(Cards) 
