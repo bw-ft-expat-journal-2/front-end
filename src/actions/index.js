@@ -1,5 +1,8 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axios from 'axios'
 // import { POSTS_PATH } from '../utils/URLS'
+
+import { POSTS_PATH } from '../utils/URLS'
 
 export const FETCH_DATA = 'FETCH_DATA';
 export const FETCH_DATA_SUCCESS = 'POST_DATA_SUCCESS'
@@ -16,7 +19,7 @@ export const fetchData = () => dispatch => {
         type: FETCH_DATA
     })
     axiosWithAuth()
-        .get(`/api/posts`)
+        .get(POSTS_PATH)
         .then(res => {
             dispatch({
                 type: FETCH_DATA_SUCCESS,
@@ -31,7 +34,7 @@ export const fetchData = () => dispatch => {
 
 export const addStory = post => {
     const addNewStory = axiosWithAuth()
-        .post(`/api/posts`, post)
+        .post(`/api/posts/${post.id}`, post)
     return (dispatch) => {
         dispatch({
             type: POST_STORY
@@ -73,6 +76,7 @@ export const deleteStory = post => dispatch =>{
                 type: DELETE_STORY_SUCCESS,
                 payload: data
             })
+            window.location = '/protected'
         })
         .catch(err => {
             console.log(`That didn't delete :/`, err)

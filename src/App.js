@@ -16,16 +16,13 @@ function App() {
   return (
     <Router>
       <Route exact path ='/'>
+      <Home component={Home} />
+      </Route>
+
+      <Route path='/login'>
         <Login component ={Login}/>
-      </Route>
-      <Route path='/home'>
-        <Home component={Home} />
-      </Route>
 
-      <Route path='/protected'>
-        <Cards component = {Cards} />
       </Route>
-
       <Route path="/register"> 
         <RegistryForm/>
       </Route>
