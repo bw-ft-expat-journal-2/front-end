@@ -12,7 +12,11 @@ const CardStyle = styled.div`
 `
 
 
-const Card = ({ post }) => {
+import { editStory } from '../actions'
+import { deleteStory } from '../actions'
+
+
+const Card = (props) => {
     
     const [images, setImages] = useState([])
 
@@ -29,11 +33,13 @@ const Card = ({ post }) => {
     }, [post])
 
     return(
+
         <CardStyle>
             <h2>{post.title}</h2>
             <p>{post.contents}</p>
             <div className='imageContainer'>
                 {images.map(image => {
+
                     return(
                         <PostImage image={image} id={post.id}/> 
                     )
@@ -43,4 +49,11 @@ const Card = ({ post }) => {
     )
 }
 
-export default Card
+const mapStateToProps = state => {
+    return {
+        editStory: state.editStory,
+        deleteStory: state.deleteStory
+    }
+}
+
+export default connect(mapStateToProps, { editStory, deleteStory }) (Card)

@@ -13,6 +13,7 @@ const CardCont = styled.div`
 `
 
 
+
 const Cards = () => {
     const [ posts, setPosts ] = useState([])
 

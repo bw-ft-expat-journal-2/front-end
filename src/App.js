@@ -18,13 +18,15 @@ function App() {
       <Route exact path ='/'>
       <Home component={Home} />
       </Route>
+
       <Route path='/login'>
         <Login component ={Login}/>
+
       </Route>
       <Route path="/register"> 
         <RegistryForm/>
       </Route>
-      <PrivateRoute exact path="/protected" component = { Cards } />
+      <PrivateRoute exact path="/protected" component = { Home } />
     </Router>
 
   );
