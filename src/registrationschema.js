@@ -9,6 +9,5 @@ export default yup.object().shape({
     .required('Email is required'),
   password: yup.string()
     .required('Password is required'),
-    terms: yup.boolean()
-    .oneOf([true], "you must agree to terms and conditions"),
+
 })
