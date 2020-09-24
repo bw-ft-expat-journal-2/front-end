@@ -84,11 +84,14 @@ html, body {
   margin-top:25rem;
   height: 25rem;
   background-color: white;
-  background-color: #f0ead6;
+  background-color: #45a29e;
 }
 .formimg img{
   border-radius:10px;
   max-height: 100%;
+}
+img{
+  max-height:100%;
 }
 .formimg{
   height:20rem;
@@ -130,6 +133,33 @@ button{
 }
 .onlywhensmall{
   display:none;
+}
+body{
+  background-color:#1b3049;
+}
+.imageContainer{
+  display:flex;
+  height:30rem;
+  padding:.25rem;
+  background-color:#1b3049;
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+  border-left: solid gray 2px;
+  border-bottom: solid gray 2px;
+  border-right: solid gray 2px;
+}
+.imageContainer img{
+  border-radius: 5px;
+}
+.description{
+  font-size: 1.5rem;
+}
+.pagecont{
+  background-position: center;
+  background-image: url("./images/bigbackground.jpg");
+  background-repeat:repeat;
+  position:absolute;
+  width: 100%;
 }
 @media(max-width: 1325px){
   .left{

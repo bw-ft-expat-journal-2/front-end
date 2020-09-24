@@ -6,7 +6,6 @@ import styled from 'styled-components'
 
 
 const CardCont = styled.div`
-    border:2px solid blue;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -28,6 +27,7 @@ const Cards = () => {
     }, [])
 
     return(
+        <div className ='pagecont'>
         <CardCont className='postHolder'>
             {posts.map(post => {
                 return(
@@ -35,6 +35,7 @@ const Cards = () => {
                 )
             })}
         </CardCont>
+        </div>
     )
 }
 

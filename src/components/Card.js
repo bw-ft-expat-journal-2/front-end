@@ -5,10 +5,14 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 const CardStyle = styled.div`
-    border:2px solid pink;
+    border: 2px solid gray;
     width: 80%;
-    padding: 0px 20px;
+    padding: .5rem;
     box-sizing: border-box;
+    margin-top: 2rem;
+    background-color:#afcbec;
+    display:flex;
+    justify-content:space-between;
 `
 
 
@@ -30,8 +34,10 @@ const Card = ({ post }) => {
 
     return(
         <CardStyle>
-            <h2>{post.title}</h2>
-            <p>{post.contents}</p>
+            <div className = 'titleanddes'>
+            <h2 className= 'title'>{post.title}</h2>
+            <p className='description'>{post.contents}</p>
+            </div>
             <div className='imageContainer'>
                 {images.map(image => {
                     return(
