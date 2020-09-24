@@ -17,14 +17,17 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				data: action.payload,
-				loading: true
+				loading: true,
+				error: '',
+				updated: false
 			}
 			case FETCH_DATA_SUCCESS:
 				return {
 					...state,
 					data: action.payload,
 					loading: false,
-					error: ""
+					error: '',
+					updated: false
 				}
 		case POST_STORY:
 			return {
@@ -50,7 +53,7 @@ export default (state = initialState, action) => {
 		case DELETE_STORY:
 			return {
 				...state,
-				data: action.payload
+				data: state.data.filter(val => val.id !== action.id)
 			}
 		case DELETE_STORY_SUCCESS:
 			return {

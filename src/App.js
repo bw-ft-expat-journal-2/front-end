@@ -22,7 +22,7 @@ function App() {
         <Home component={Home} />
       </Route>
 
-      <Route path='/cards'>
+      <Route path='/protected'>
         <Cards component = {Cards} />
       </Route>
 
