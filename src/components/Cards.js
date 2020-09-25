@@ -31,7 +31,7 @@ const Cards = () => {
             .catch(err => {
                 console.log(err)
             })
-    }, [posts])
+    }, [])
 
     return(
         <div className='allcont'>
