@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { fetchData } from '../actions/index'
 import styled from 'styled-components'
 
+import AddPost from './AddPost'
 
 const CardCont = styled.div`
     display:flex;
@@ -35,6 +36,9 @@ const Cards = () => {
 
     return(
         <div className='allcont'>
+        <div>
+            <AddPost />
+        </div>
         <CardCont className='postHolder'>
             {posts.map(post => {
                 return(
