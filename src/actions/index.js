@@ -32,15 +32,14 @@ export const fetchData = () => dispatch => {
     }
 }
 
-export const addStory = post => {
-    const addNewStory = axiosWithAuth()
-        .post(`/api/posts/${post.id}`, post)
-    return (dispatch) => {
+export const addStory = (post, userID = 2) => dispatch =>{
         dispatch({
             type: POST_STORY
         })
-        addNewStory
+        console.log(userID)
+        axiosWithAuth().post(`/api/posts/${userID}`, post)
             .then(({data}) => {
+                console.log(data)
                 dispatch({
                     type: POST_STORY_SUCCESS,
                     payload: data
@@ -50,7 +49,6 @@ export const addStory = post => {
             })
             })
     }
-}
 
 export const editStory = post => dispatch => {
     dispatch({

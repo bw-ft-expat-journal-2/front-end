@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 
 
 const AddPost = props => {
-    const [formState, setFormState] = useState({
+    const [formState, setFormState] = useState
+({
         title: "",
         contents: ""
     })
@@ -17,6 +18,7 @@ const AddPost = props => {
     }
 
     const formSubmit = e => {
+        e.preventDefault()
         props.addStory(formState)
     }
 
