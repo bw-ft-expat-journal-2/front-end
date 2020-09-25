@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 const AddPost = props => {
     const [formState, setFormState] = useState({
         title: "",
-        conents: ""
+        contents: ""
     })
 
     const inputChange = e => {
@@ -56,3 +56,8 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, { addStory }) (AddPost)
+
+
+
+
+
